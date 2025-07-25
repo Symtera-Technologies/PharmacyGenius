@@ -1,0 +1,371 @@
+{
+	"info": {
+		"name": "PharmacyGenius Search API",
+		"description": "Comprehensive drug search API using GPT-4o Search Preview for real-time web-based drug information",
+		"version": "1.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"auth": {
+		"type": "noauth"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "API Information",
+			"item": [
+				{
+					"name": "Root Endpoint",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": ["{{base_url}}"],
+							"path": [""]
+						},
+						"description": "Welcome endpoint to verify API is running"
+					},
+					"response": []
+				},
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": ["{{base_url}}"],
+							"path": ["health"]
+						},
+						"description": "Check API health and OpenAI connectivity"
+					},
+					"response": []
+				},
+				{
+					"name": "API Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/info",
+							"host": ["{{base_url}}"],
+							"path": ["info"]
+						},
+						"description": "Get detailed information about API capabilities"
+					},
+					"response": []
+				}
+			],
+			"description": "Basic API information and health check endpoints"
+		},
+		{
+			"name": "Drug Search",
+			"item": [
+				{
+					"name": "Search Drug - Basic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drug_name\": \"aspirin\",\n    \"include_dosage\": true,\n    \"include_side_effects\": true,\n    \"include_interactions\": false\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/search/drug",
+							"host": ["{{base_url}}"],
+							"path": ["search", "drug"]
+						},
+						"description": "Search for basic drug information (aspirin example)"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Drug - With Interactions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drug_name\": \"lisinopril\",\n    \"include_dosage\": true,\n    \"include_side_effects\": true,\n    \"include_interactions\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/search/drug",
+							"host": ["{{base_url}}"],
+							"path": ["search", "drug"]
+						},
+						"description": "Search for comprehensive drug information including interactions"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Drug - Minimal Info",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drug_name\": \"metformin\",\n    \"include_dosage\": false,\n    \"include_side_effects\": false,\n    \"include_interactions\": false\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/search/drug",
+							"host": ["{{base_url}}"],
+							"path": ["search", "drug"]
+						},
+						"description": "Search for minimal drug information (basic details only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Quick Search - GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/search/quick?drug_name=ibuprofen",
+							"host": ["{{base_url}}"],
+							"path": ["search", "quick"],
+							"query": [
+								{
+									"key": "drug_name",
+									"value": "ibuprofen"
+								}
+							]
+						},
+						"description": "Quick drug search using GET method with query parameter"
+					},
+					"response": []
+				}
+			],
+			"description": "Drug search endpoints for getting comprehensive drug information"
+		},
+		{
+			"name": "Test Cases",
+			"item": [
+				{
+					"name": "Common Medications",
+					"item": [
+						{
+							"name": "Search Acetaminophen",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"acetaminophen\",\n    \"include_dosage\": true,\n    \"include_side_effects\": true,\n    \"include_interactions\": false\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/search/drug",
+									"host": ["{{base_url}}"],
+									"path": ["search", "drug"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Metoprolol",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"metoprolol\",\n    \"include_dosage\": true,\n    \"include_side_effects\": true,\n    \"include_interactions\": true\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/search/drug",
+									"host": ["{{base_url}}"],
+									"path": ["search", "drug"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Atorvastatin",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"atorvastatin\",\n    \"include_dosage\": true,\n    \"include_side_effects\": true,\n    \"include_interactions\": false\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/search/drug",
+									"host": ["{{base_url}}"],
+									"path": ["search", "drug"]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Specialized Medications",
+					"item": [
+						{
+							"name": "Search Insulin",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"insulin\",\n    \"include_dosage\": true,\n    \"include_side_effects\": true,\n    \"include_interactions\": true\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/search/drug",
+									"host": ["{{base_url}}"],
+									"path": ["search", "drug"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Chemotherapy Drug",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"doxorubicin\",\n    \"include_dosage\": true,\n    \"include_side_effects\": true,\n    \"include_interactions\": true\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/search/drug",
+									"host": ["{{base_url}}"],
+									"path": ["search", "drug"]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Error Testing",
+					"item": [
+						{
+							"name": "Empty Drug Name",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"\",\n    \"include_dosage\": true,\n    \"include_side_effects\": true,\n    \"include_interactions\": false\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/search/drug",
+									"host": ["{{base_url}}"],
+									"path": ["search", "drug"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid Drug Name",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drug_name\": \"nonexistentdrugxyz123\",\n    \"include_dosage\": true,\n    \"include_side_effects\": true,\n    \"include_interactions\": false\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/search/drug",
+									"host": ["{{base_url}}"],
+									"path": ["search", "drug"]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "Various test cases for different drug types and error scenarios"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Pre-request script for all requests",
+					"console.log('Making request to:', pm.request.url.toString());"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Test script for all requests",
+					"pm.test('Status code is 200', function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test('Response has success field', function () {",
+					"    const responseJson = pm.response.json();",
+					"    pm.expect(responseJson).to.have.property('success');",
+					"});",
+					"",
+					"pm.test('Response time is acceptable', function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(30000);",
+					"});"
+				]
+			}
+		}
+	]
+} 
