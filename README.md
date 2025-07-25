@@ -2,7 +2,7 @@
 
 A powerful drug search API using GPT-4o Search Preview to get real-time, comprehensive drug information from authoritative web sources.
 
-## 🌟 Features
+##  Features
 
 - **Real-time Web Search**: Uses GPT-4o Search Preview for up-to-date information
 - **Comprehensive Drug Profiles**: Get detailed drug information including:
@@ -17,7 +17,7 @@ A powerful drug search API using GPT-4o Search Preview to get real-time, compreh
 - **Swagger Documentation**: Interactive API documentation
 - **Postman Collection**: Ready-to-use test collection
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Installation
 
@@ -66,7 +66,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 - **Alternative Documentation (ReDoc)**: http://localhost:8000/redoc
 - **API Root**: http://localhost:8000/
 
-## 📚 API Endpoints
+##  API Endpoints
 
 ### Core Endpoints
 
@@ -83,7 +83,7 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 | POST | `/search/drug` | Main drug search with detailed options |
 | GET | `/search/quick` | Quick drug search with query parameter |
 
-## 🔍 Usage Examples
+##  Usage Examples
 
 ### Basic Drug Search
 
@@ -117,7 +117,7 @@ curl -X POST "http://localhost:8000/search/drug" \
      }'
 ```
 
-## 📋 Request/Response Format
+##  Request/Response Format
 
 ### Request Schema
 
@@ -150,7 +150,7 @@ curl -X POST "http://localhost:8000/search/drug" \
 }
 ```
 
-## 🧪 Testing
+##  Testing
 
 ### Using Postman
 
@@ -181,7 +181,7 @@ curl -X POST "http://localhost:8000/search/drug" \
      -d '{"drug_name": "acetaminophen"}'
 ```
 
-## 🔧 Configuration
+##  Configuration
 
 ### Environment Variables
 
@@ -225,7 +225,7 @@ The API searches information from:
 - Protect your OpenAI API key
 - Consider implementing authentication for production use
 
-## 🛠️ Development
+##  Development
 
 ### Project Structure
 
@@ -253,7 +253,7 @@ apis/
 - **Pydantic**: Data validation
 - **python-dotenv**: Environment management
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
@@ -282,7 +282,7 @@ uvicorn.run('main:app', host='0.0.0.0', port=8000, reload=True)
 "
 ```
 
-## 📞 Support
+##  Support
 
 For issues and questions:
 1. Check the [troubleshooting section](#-troubleshooting)
@@ -290,10 +290,8 @@ For issues and questions:
 3. Test with the provided Postman collection
 4. Check OpenAI API status and rate limits
 
-## 📄 License
-
-MIT License - See project root for details.
+##  License
 
 ---
 
-**Ready to search for drug information!** 🔬💊 
+**Ready to search for drug information!** 
